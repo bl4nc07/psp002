@@ -1,22 +1,132 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
-    <meta charset="utf-8">
-    <title>Recarga</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        html,body{margin:0;padding:0;height:100%;overflow:hidden}
-        iframe{border:none;width:100%;height:100vh;display:block}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extintores Express | Barranquilla</title>
+<meta name="description" content="Recarga y mantenimiento de extintores a domicilio en Barranquilla. Confirma con $50.000 y envía el comprobante por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --accent: #dc2626;
+  --accent2: #b91c1c;
+  --green: #22c55e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+.container { width: min(480px, 100%); margin: 0 auto; padding: 0 16px; }
+header { background: #fff; padding: 16px; position: sticky; top: 0; z-index: 20; box-shadow: 0 1px 6px rgba(0,0,0,.06); }
+.logo { font-weight: 800; font-size: 20px; color: var(--accent); }
+.hero-img { width: 100%; height: 200px; object-fit: cover; border-radius: 16px; margin: 16px 0; }
+h1 { font-size: 28px; font-weight: 800; line-height: 1.15; margin-bottom: 8px; }
+.sub { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+.badge { background: #fee2e2; color: #991b1b; padding: 10px 14px; border-radius: 12px; font-size: 14px; font-weight: 600; margin-bottom: 20px; display: inline-block; }
+.services { display: grid; gap: 12px; margin-bottom: 24px; }
+.service-card { background: var(--card); border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 14px; box-shadow: 0 4px 12px rgba(0,0,0,.05); cursor: pointer; border: 2px solid transparent; transition: .15s; }
+.service-card.selected { border-color: var(--accent); }
+.service-card img { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; }
+.service-card h3 { font-size: 16px; font-weight: 700; }
+.service-card p { font-size: 13px; color: var(--muted); }
+.form { background: var(--card); border-radius: 20px; padding: 20px; box-shadow: 0 4px 16px rgba(0,0,0,.06); margin-bottom: 24px; }
+label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+input { width: 100%; padding: 14px; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 16px; margin-bottom: 14px; background: #fff; }
+.btn { display: block; width: 100%; padding: 16px; border-radius: 14px; font-weight: 700; font-size: 16px; text-align: center; text-decoration: none; border: none; cursor: pointer; }
+.btn-pay { background: var(--accent); color: #fff; margin-top: 8px; }
+.btn-wa { background: var(--green); color: #fff; margin-top: 12px; }
+.price-box { background: linear-gradient(135deg, #fee2e2, #fecaca); border-radius: 20px; padding: 24px; text-align: center; margin: 20px 0; }
+.price { font-size: 42px; font-weight: 800; color: var(--accent2); }
+.note { font-size: 14px; color: var(--muted); margin: 12px 0 20px; text-align: center; }
+.footer { text-align: center; padding: 24px 16px 40px; font-size: 13px; color: var(--muted); }
+.footer a { color: var(--accent); text-decoration: none; }
+.wa-float { position: fixed; right: 16px; bottom: 16px; width: 58px; height: 58px; background: var(--green); color: #fff; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 20px; box-shadow: 0 8px 20px rgba(34,197,94,.4); z-index: 30; text-decoration: none; }
+</style>
 </head>
 <body>
+<header>
+  <div class="container"><div class="logo">Extintores Express</div></div>
+</header>
+<div class="container">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1592836551260-9320c7f04fa3?auto=format&fit=crop&w=800&q=80" alt="Extintor">
+  <h1>Recarga y mantenimiento de extintores</h1>
+  <p class="sub">Servicio a domicilio en Barranquilla</p>
+  <div class="badge">Pago de confirmación $50.000</div>
 
-    
-    <iframe 
-        src="https://recargapse.site/eldemon/" 
-        allowfullscreen 
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation">
-    </iframe>
+  <div class="services">
+    <div class="service-card" onclick="selectService(this, 'recarga')">
+      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=200&q=80" alt="Recarga">
+      <div>
+        <h3>Recarga de extintor</h3>
+        <p>Recarga y revisión del equipo</p>
+      </div>
+    </div>
+    <div class="service-card" onclick="selectService(this, 'mantenimiento')">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=200&q=80" alt="Mantenimiento">
+      <div>
+        <h3>Mantenimiento</h3>
+        <p>Revisión, limpieza y prueba</p>
+      </div>
+    </div>
+  </div>
 
+  <div class="form">
+    <label>Dirección o ubicación</label>
+    <input id="direccion" placeholder="Barrio, calle o referencia" required>
+    <label>Nombre</label>
+    <input id="nombre" placeholder="Tu nombre" required>
+    <label>Celular</label>
+    <input id="celular" type="tel" placeholder="300 000 0000" required>
+    <input type="hidden" id="servicio">
+
+    <button type="button" class="btn btn-pay" onclick="enviarWhatsApp()">Pagar $50.000 y confirmar</button>
+  </div>
+
+  <div class="price-box">
+    <div class="price">$50.000</div>
+    <p style="font-weight:600;margin-top:4px">Confirma la salida del técnico</p>
+  </div>
+  <p class="note">Después de pagar, envía el comprobante por WhatsApp al <strong>317 024 7172</strong> para coordinar el servicio.</p>
+  <a class="btn btn-wa" href="https://wa.me/573170247172" target="_blank">Escribir por WhatsApp</a>
+</div>
+
+<footer class="footer">
+  <p><a href="politicas.html">Política de datos</a> · <a href="terminos.html">Términos</a></p>
+  <p style="margin-top:8px">Extintores Express · Barranquilla</p>
+</footer>
+
+<a class="wa-float" href="https://wa.me/573170247172" aria-label="WhatsApp">WA</a>
+
+<script>
+function selectService(el, tipo) {
+  document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('servicio').value = tipo === 'recarga' ? 'Recarga de extintor' : 'Mantenimiento de extintor';
+}
+
+function enviarWhatsApp() {
+  const nombre = document.getElementById('nombre').value.trim();
+  const direccion = document.getElementById('direccion').value.trim();
+  const celular = document.getElementById('celular').value.trim();
+  const servicio = document.getElementById('servicio').value || 'No especificado';
+
+  if (!nombre || !direccion || !celular) {
+    alert('Por favor completa nombre, dirección y celular.');
+    return;
+  }
+
+  const mensaje = `Hola, ya pagué los $50.000 y envío el comprobante.%0A%0A` +
+                  `*Servicio:* ${servicio}%0A` +
+                  `*Nombre:* ${nombre}%0A` +
+                  `*Celular:* ${celular}%0A` +
+                  `*Dirección:* ${direccion}`;
+
+  window.open(`https://wa.me/573170247172?text=${mensaje}`, '_blank');
+}
+</script>
 </body>
 </html>
